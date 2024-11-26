@@ -17,82 +17,6 @@
             flex-direction: column;
             user-select: none;
         }
-
-        .heart {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            transform: rotate(-45deg);
-            animation: floatUp 4s ease-in-out infinite;
-        }
-
-        .heart::before, .heart::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            border-radius: 50px;
-        }
-
-        .heart::before {
-            top: -25px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: 25px;
-            top: 0;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(600px) scale(1) rotate(-45deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-200px) scale(2.5) rotate(-45deg);
-                opacity: 0;
-            }
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: transparent;
-            border: 8px solid red;
-            transform: scale(0);
-            animation: expandFade 0.5s ease-out forwards;
-            pointer-events: none;
-        }
-
-        @keyframes expandFade {
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        header {
-            text-align: center;
-            color: red;
-            font-size: 25px;
-        }
-
-        h2 {
-            text-align: center;
-            color: black;
-            font-size: 20px;
-        }
-
-        #countdown {
-            font-size: 2rem;
-            color: red;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            pointer-events: auto;
-        }
-
         .envelope {
             position: absolute;
             width: 50px;
@@ -103,7 +27,6 @@
             animation: floatUp 4s ease-in-out infinite;
             clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
         }
-
         .envelope::before {
             content: '';
             position: absolute;
@@ -113,6 +36,71 @@
             height: 50%;
             background-color: black;
             clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: floatUp 4s ease-in-out infinite;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50px;
+        }
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(600px) scale(1) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(2.5) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: transparent;
+            border: 8px solid red;
+            transform: scale(0);
+            animation: expandFade 0.5s ease-out forwards;
+            pointer-events: none;
+        }
+        @keyframes expandFade {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        header {
+            text-align: center;
+            color: red;
+            font-size: 25px;
+        }
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+        #countdown {
+            font-size: 2rem;
+            color: red;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -136,26 +124,12 @@
 
             if (distance < 0) {
                 clearInterval(countdownInterval);
-                document.getElementById("countdown").innerHTML = "Happy Birthday!\nคำใบ้ : ต่างจากพวก";
+                document.getElementById("countdown").innerHTML = "Happy Birthday!\nคำใบ้ : ไม่ใช่หัวใจ";
                 setTimeout(function() {
                     createWhiteEnvelope();
                 }, 2000);
             }
         }, 1000);
-
-        document.addEventListener('click', (event) => {
-            const circle = document.createElement('div');
-            circle.className = 'circle';
-            document.body.appendChild(circle);
-            const size = Math.random() * 50 + 50;
-            circle.style.width = size + 'px';
-            circle.style.height = size + 'px';
-            circle.style.left = event.pageX - size / 2 + 'px';
-            circle.style.top = event.pageY - size / 2 + 'px';
-            setTimeout(() => {
-                document.body.removeChild(circle);
-            }, 500);
-        });
 
         function createHeart() {
             const heart = document.createElement('div');
@@ -236,6 +210,20 @@
                 isCooldown = false;
             }, 3000);
         }
+
+        document.addEventListener('click', (event) => {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            document.body.appendChild(circle);
+            const size = Math.random() * 50 + 50;
+            circle.style.width = size + 'px';
+            circle.style.height = size + 'px';
+            circle.style.left = event.pageX - size / 2 + 'px';
+            circle.style.top = event.pageY - size / 2 + 'px';
+            setTimeout(() => {
+                document.body.removeChild(circle);
+            }, 500);
+        });
     </script>
 </body>
 </html>
